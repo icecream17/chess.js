@@ -1423,17 +1423,18 @@ class Chess {
 
         /* if the position started with black to move, start PGN with 1. ... */
         if (!this._history.length && move.color === Chess.BLACK) {
-          move_string += '. ...'
+          move_string = this.moveNumber + '. ...'
         } else if (move.color === Chess.WHITE) {
           /* store the previous generated move_string if we have one */
           if (move_string.length) {
             moves.push(move_string)
           }
-          move_string += '.'
+          move_string = this.moveNumber + '.'
         }
 
         move_string +=
-          ' ' + this.move_to_san(move, this.___generate_pseudolegal_moves())
+          ' ' +
+          this.move_to_san(move, this.___generate_pseudolegal_moves())
         this.make_move(move)
       }
 
