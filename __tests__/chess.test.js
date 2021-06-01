@@ -1298,9 +1298,13 @@ describe("Validate FEN", function() {
 
   positions.forEach(function(position) {
 
-    it(position.fen + ' (valid: ' + (position.error_number  == 0) + ')', function() {
-      var result = Chess.validateFen(position.fen);
-      expect(result.error_number == position.error_number).toBe(true);
+    it(`${position.fen} valid: ${position.error_number === 0}`, function() {
+      const result = Chess.validateFen(position.fen);
+      if (position.error_number === 0) {
+        expect(result).toBe(true)
+      } else {
+        expect(typeof result).toBe("string");
+      }
     });
 
   });
