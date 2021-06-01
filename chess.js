@@ -1663,8 +1663,9 @@ class Chess {
       moves = moves.join(',').replace(/,,+/g, ',').split(',')
       let move = ''
 
+      let comment
       for (let half_move = 0; half_move < moves.length - 1; half_move++) {
-        let comment = decode_comment(moves[half_move])
+        comment = decode_comment(moves[half_move])
         if (comment !== undefined) {
           this.comments[this.generate_fen()] = comment
           continue
@@ -1689,7 +1690,7 @@ class Chess {
 
       /* examine last move */
       move = moves[moves.length - 1]
-      if (POSSIBLE_RESULTS.indexOf(move) > -1) {
+      if (Chess.POSSIBLE_RESULTS.includes(move)) {
         if (has_keys(header) && typeof header.Result === 'undefined') {
           this.set_header(['Result', move])
         }
