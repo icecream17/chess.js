@@ -1393,7 +1393,7 @@ class Chess {
         result.push(newline)
       }
 
-      const append_comment = function (move_string) {
+      const append_comment = move_string => {
         const comment = this.comments[this.generate_fen()]
         if (typeof comment !== 'undefined') {
           const delimiter = move_string.length > 0 ? ' ' : ''
@@ -1696,7 +1696,7 @@ class Chess {
       /* examine last move */
       move = moves[moves.length - 1]
       if (Chess.POSSIBLE_RESULTS.includes(move)) {
-        if (has_keys(header) && typeof header.Result === 'undefined') {
+        if (has_keys(this._header) && typeof this._header.Result === 'undefined') {
           this.set_header(['Result', move])
         }
       } else {
@@ -1704,7 +1704,7 @@ class Chess {
         if (move == null) {
           return false
         } else {
-          make_move(move)
+          this.make_move(move)
         }
       }
       return true
