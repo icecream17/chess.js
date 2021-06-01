@@ -1399,7 +1399,7 @@ class Chess {
 
       /* pop all of history onto reversed_history */
       let reversed_history = []
-      while (history.length > 0) {
+      while (this._history.length > 0) {
         reversed_history.push(this.undo_move())
       }
 
@@ -1574,7 +1574,7 @@ class Chess {
       this.reset()
 
       /* parse PGN header */
-      const headers = this.parse_pgn_header(header_string, options)
+      const headers = parse_pgn_header(header_string, options)
       for (const key in headers) {
         this.set_header([key, headers[key]])
       }
