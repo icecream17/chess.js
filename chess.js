@@ -567,7 +567,7 @@ class Chess {
       return move
    }
 
-   ___generate_psuedolegal_moves(options) {
+   ___generate_pseudolegal_moves(options) {
       const add_move = (board, moves, from, to, flags) => {
          /* if pawn promotion */
          if (
@@ -706,7 +706,7 @@ class Chess {
    }
 
    ___generate_legal_moves(options) {
-      const pseudolegalmoves = this.___generate_psuedolegal_moves(options)
+      const pseudolegalmoves = this.___generate_pseudolegal_moves(options)
       const us = this.turn
 
       /* filter out illegal moves */
@@ -726,7 +726,7 @@ class Chess {
       if (options?.legal ?? true) {
          return this.___generate_legal_moves(options)
       } else {
-         return this.___generate_psuedolegal_moves(options)
+         return this.___generate_pseudolegal_moves(options)
       }
    }
 
@@ -1248,7 +1248,7 @@ class Chess {
 
       moves = legalMoves
       if (sloppy) {
-         moves = illegalMoves = this.___generate_psuedolegal_moves({
+         moves = illegalMoves = this.___generate_pseudolegal_moves({
             legal: false,
             piece: piece ? piece : piece_type,
          })
@@ -1831,7 +1831,7 @@ class Chess {
     * DEBUGGING UTILITIES
     ****************************************************************************/
    perft(depth=4) {
-      const moves = this.___generate_psuedolegal_moves()
+      const moves = this.___generate_pseudolegal_moves()
       const us = this.turn
       let nodes = 0
 
@@ -1856,7 +1856,7 @@ class Chess {
          return this.moves()
       }
 
-      const moves = this.___generate_psuedolegal_moves()
+      const moves = this.___generate_pseudolegal_moves()
       let divisions = new Map()
       let total_nodes = 0
 
