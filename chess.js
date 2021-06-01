@@ -300,6 +300,11 @@ class Chess {
       // Loads the fen
       // The default fen is the starting position
       this.load(fen)
+
+      const self = this
+      this.header = function header (...args) {
+         self.set_header(args)
+      }
    }
 
    clear(keepHeaders=false) {
@@ -1703,10 +1708,6 @@ class Chess {
         }
       }
       return true
-    }
-
-    header (...args) {
-      return this.set_header(args)
     }
 
     move (move, options) {
