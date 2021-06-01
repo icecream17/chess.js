@@ -1438,8 +1438,8 @@ class Chess {
       }
 
       /* is there a result? */
-      if (typeof header.Result !== 'undefined') {
-        moves.push(header.Result)
+      if (typeof this._header.Result !== 'undefined') {
+        moves.push(this._header.Result)
       }
 
       /* history should be back to what it was before we started generating PGN,
