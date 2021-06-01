@@ -1299,7 +1299,7 @@ describe("Validate FEN", function() {
   positions.forEach(function(position) {
 
     it(position.fen + ' (valid: ' + (position.error_number  == 0) + ')', function() {
-      var result = chess.validate_fen(position.fen);
+      var result = Chess.validate_fen(position.fen);
       expect(result.error_number == position.error_number).toBe(true);
     });
 
