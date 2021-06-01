@@ -591,7 +591,7 @@ class Chess {
       let searchRange = [Chess.FIRST_SQUARE, Chess.LAST_SQUARE]
       if (options !== undefined && 'square' in options) {
          if (options.square in Chess.SQUARES) {
-            searchRange = [options.square, options.square]
+            searchRange = [Chess.SQUARES[options.square], Chess.SQUARES[options.square]]
             single_square = true
          } else {
             /* invalid square */
