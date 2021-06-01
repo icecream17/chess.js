@@ -325,7 +325,7 @@ class Chess {
    prune_comments() {
       const reversed_history = []
       const current_comments = {}
-      function copy_comment (fen) {
+      const copy_comment = fen => {
          if (fen in this.comments) {
             current_comments[fen] = this.comments[fen]
          }
@@ -1422,7 +1422,7 @@ class Chess {
         const move = reversed_history.pop()
 
         /* if the position started with black to move, start PGN with 1. ... */
-        if (!history.length && move.color === Chess.BLACK) {
+        if (!this._history.length && move.color === Chess.BLACK) {
           move_string += '. ...'
         } else if (move.color === Chess.WHITE) {
           /* store the previous generated move_string if we have one */
