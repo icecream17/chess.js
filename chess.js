@@ -294,7 +294,7 @@ class Chess {
       this.moveNumber = 1
       this._history = []
 
-      this.header = {}
+      this._header = {}
       this.comments = {}
 
       // Loads the fen
@@ -311,7 +311,7 @@ class Chess {
       this.halfMoves = 0
       this.moveNumber = 1
       this._history = []
-      if (!keepHeaders) this.header = {}
+      if (!keepHeaders) this._header = {}
       this.comments = {}
       this.update_setup(this.generate_fen())
    }
@@ -477,11 +477,11 @@ class Chess {
       if (this._history.length > 0) return
 
       if (fen !== Chess.DEFAULT_POSITION) {
-         this.header['SetUp'] = '1'
-         this.header['FEN'] = fen
+         this._header['SetUp'] = '1'
+         this._header['FEN'] = fen
       } else {
-         delete this.header['SetUp']
-         delete this.header['FEN']
+         delete this._header['SetUp']
+         delete this._header['FEN']
       }
    }
 
@@ -492,7 +492,7 @@ class Chess {
 
    put(piece, square) {
       /* check for valid piece object */
-      if (!('type' in piece && 'color' in piece)) {
+      if (piece?.type == undefined || piece?.color == undefined) {
          return false
       }
 
@@ -1340,7 +1340,7 @@ class Chess {
          this.in_threefold_repetition()
       )
    }
-   get fen () {
+   fen () {
       return this.generate_fen()
    }
    board () {
