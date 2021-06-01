@@ -303,7 +303,7 @@ class Chess {
 
       const self = this
       this.header = function header (...args) {
-         self.set_header(args)
+         return self.set_header(args)
       }
    }
 
